@@ -12,7 +12,7 @@ set -eo pipefail
 # That's good because it prevents our output overlapping with wget's.
 # It also means that we can't run a partially downloaded script.
 
-SUPPORTED_VERSIONS="Debian [10, 11], Ubuntu [18.04, 20.04, 22.04]"
+SUPPORTED_VERSIONS="Debian [10, 11], Ubuntu [16.04, 18.04, 20.04, 22.04]"
 
 log-fail() {
   declare desc="log fail formatter"
@@ -152,7 +152,7 @@ install-dokku-from-deb-package() {
   local NO_INSTALL_RECOMMENDS=${DOKKU_NO_INSTALL_RECOMMENDS:=""}
   local OS_ID
 
-  if ! in-array "$DOKKU_DISTRO_VERSION" "18.04" "20.04" "22.04" "10" "11"; then
+  if ! in-array "$DOKKU_DISTRO_VERSION" "16.04", "18.04" "20.04" "22.04" "10" "11"; then
     log-fail "Unsupported Linux distribution. Only the following versions are supported: $SUPPORTED_VERSIONS"
   fi
 
